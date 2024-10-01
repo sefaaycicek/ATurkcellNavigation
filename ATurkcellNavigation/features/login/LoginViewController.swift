@@ -21,13 +21,23 @@ class LoginViewController: UIViewController {
     }
  
     func navigateHomeController() {
+        let viewController = TurkcellStoryboard.main.viewController(viewControllerClass: ViewController.self)
+        let homeViewModel = HomeViewModel(userName: "Sefa", backGroundColor: UIColor.green)
+        viewController.viewModel = homeViewModel
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let navigation = UINavigationController(rootViewController: viewController)
+        
+        navigation.modalPresentationStyle = .fullScreen
+        navigation.modalTransitionStyle = .crossDissolve
+        
+        self.present(navigation, animated: true)
+        
+        /*let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "homeNavigation")
         viewController.modalPresentationStyle = .fullScreen
         viewController.modalTransitionStyle = .crossDissolve
         
-        self.present(viewController, animated: true)
+        self.present(viewController, animated: true)*/
     }
     
     @IBAction func registerTapped(_ sender: Any) {
